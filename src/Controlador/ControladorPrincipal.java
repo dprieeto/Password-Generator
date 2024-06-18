@@ -2,12 +2,14 @@ package Controlador;
 
 import Vista.*;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author Prieto
  */
-public class ControladorPrincipal {
+public class ControladorPrincipal implements ActionListener{
     
     private VistaPrincipal vPrincipal;
     
@@ -29,7 +31,33 @@ public class ControladorPrincipal {
     }
     
     private void addListeners() {
+        vPrincipal.jMenuFileExit.addActionListener(this);
+        vPrincipal.jMenuFileNew.addActionListener(this);
+        vPrincipal.jMenuFileOpen.addActionListener(this);
+        vPrincipal.jMenuFileSave.addActionListener(this);
         
+        
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch(e.getActionCommand()) {
+            case "Exit" -> {
+                
+                // mensaje de salir sin guardar
+                vPrincipal.dispose();
+                System.exit(0);
+            }
+            case "New" -> {
+                
+            }
+            case "Open" -> {
+                
+            }
+            case "Save" -> {
+                
+            }
+        }
     }
     
     
