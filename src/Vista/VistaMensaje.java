@@ -22,7 +22,7 @@ public class VistaMensaje {
     /**
      * 
      * @param C
-     * @param titulo "info"/"error"
+     * @param titulo "info"/"error/warning"
      * @param texto texto del mensaje
      */
     public void Mensaje(Component C, String titulo, String texto) {
@@ -35,17 +35,21 @@ public class VistaMensaje {
                 JOptionPane.showMessageDialog(C, texto, titulo, JOptionPane.ERROR_MESSAGE);
                 break;
             }
+            case "warning" -> {
+                JOptionPane.showMessageDialog(C, texto, titulo, JOptionPane.WARNING_MESSAGE);
+            }
         }
     }
     
     /** Muestra un mensaje de error o informacion. Metodo estatico
      *  Asi se puede utilizar sin necesidad de crear un objeto
      * @param C componente sobre el que se lanza el mensaje, puede ser null
-     * @param titulo info- mensaje de informacion, error-mensaje de error
+     * @param tipoMensaje info = mensaje de informacion, error=mensaje de error, warning=mensaje de advertencia
+     * @param titulo titulo del mensaje
      * @param texto texto que sequiere mostrar del mensaje
      */
-    public static void StaticMensaje(Component C, String titulo, String texto) {
-        switch(titulo) { 
+    public static void StaticMensaje(Component C, String tipoMensaje, String titulo, String texto) {
+        switch(tipoMensaje) { 
             case "info" -> {
                 JOptionPane.showMessageDialog(C, texto, titulo, JOptionPane.INFORMATION_MESSAGE);
                 break;
@@ -53,6 +57,9 @@ public class VistaMensaje {
             case "error" -> {
                 JOptionPane.showMessageDialog(C, texto, titulo, JOptionPane.ERROR_MESSAGE);
                 break;
+            }
+            case "warning" -> {
+                JOptionPane.showMessageDialog(C, texto, titulo, JOptionPane.WARNING_MESSAGE);
             }
         }
     }

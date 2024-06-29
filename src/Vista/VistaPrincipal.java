@@ -26,11 +26,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        jMenuFileNew = new javax.swing.JMenuItem();
-        jMenuFileOpen = new javax.swing.JMenuItem();
-        jMenuFileSave = new javax.swing.JMenuItem();
         jMenuFileExit = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -39,32 +35,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Password Generator");
+        setPreferredSize(new java.awt.Dimension(500, 400));
+        setResizable(false);
 
         jMenu3.setText("File");
-
-        jMenuFileNew.setText("New");
-        jMenuFileNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuFileNewActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuFileNew);
-
-        jMenuFileOpen.setText("Open");
-        jMenuFileOpen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuFileOpenActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuFileOpen);
-
-        jMenuFileSave.setText("Save");
-        jMenuFileSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuFileSaveActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuFileSave);
 
         jMenuFileExit.setText("Exit");
         jMenuFileExit.addActionListener(new java.awt.event.ActionListener() {
@@ -75,9 +49,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuFileExit);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar1.add(jMenu4);
 
         jMenu5.setText("About");
         jMenuBar1.add(jMenu5);
@@ -98,21 +69,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFileOpenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuFileOpenActionPerformed
-
-    private void jMenuFileSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFileSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuFileSaveActionPerformed
-
     private void jMenuFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFileExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuFileExitActionPerformed
-
-    private void jMenuFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFileNewActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuFileNewActionPerformed
 
     
     
@@ -121,12 +80,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem jMenuFileExit;
-    public javax.swing.JMenuItem jMenuFileNew;
-    public javax.swing.JMenuItem jMenuFileOpen;
-    public javax.swing.JMenuItem jMenuFileSave;
     // End of variables declaration//GEN-END:variables
 }

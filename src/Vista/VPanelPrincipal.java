@@ -41,6 +41,16 @@ public class VPanelPrincipal extends javax.swing.JPanel {
         jMenu9 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jCheckBoxMinusculas = new javax.swing.JCheckBox();
+        jCheckBoxMayusculas = new javax.swing.JCheckBox();
+        jCheckBoxNumeros = new javax.swing.JCheckBox();
+        jCheckBoxSimbolos = new javax.swing.JCheckBox();
+        jCheckBoxCaracterEspecialMinusculas = new javax.swing.JCheckBox();
+        jCheckBoxCaracterEspecialMayusculas = new javax.swing.JCheckBox();
+        jSliderLongitudPass = new javax.swing.JSlider();
+        jLabelLongitudPass = new javax.swing.JLabel();
+        jButtonCrearPass = new javax.swing.JButton();
+        jLabelPassword = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -72,20 +82,183 @@ public class VPanelPrincipal extends javax.swing.JPanel {
 
         jMenuItem2.setText("jMenuItem2");
 
+        setPreferredSize(new java.awt.Dimension(500, 400));
+
+        jCheckBoxMinusculas.setText("Lowercase (abc)");
+        jCheckBoxMinusculas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxMinusculasStateChanged(evt);
+            }
+        });
+
+        jCheckBoxMayusculas.setText("Uppercase (ABC)");
+        jCheckBoxMayusculas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxMayusculasStateChanged(evt);
+            }
+        });
+
+        jCheckBoxNumeros.setText("Numbers (123)");
+        jCheckBoxNumeros.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxNumerosStateChanged(evt);
+            }
+        });
+
+        jCheckBoxSimbolos.setText("Symbols (@#$)");
+        jCheckBoxSimbolos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCheckBoxSimbolos.setFocusable(false);
+        jCheckBoxSimbolos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxSimbolosStateChanged(evt);
+            }
+        });
+
+        jCheckBoxCaracterEspecialMinusculas.setText("Use 'ñ', 'ç'");
+        jCheckBoxCaracterEspecialMinusculas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxCaracterEspecialMinusculasStateChanged(evt);
+            }
+        });
+        jCheckBoxCaracterEspecialMinusculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxCaracterEspecialMinusculasActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxCaracterEspecialMayusculas.setText("Use 'Ñ', 'Ç'");
+        jCheckBoxCaracterEspecialMayusculas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxCaracterEspecialMayusculasStateChanged(evt);
+            }
+        });
+
+        jSliderLongitudPass.setMajorTickSpacing(4);
+        jSliderLongitudPass.setMaximum(32);
+        jSliderLongitudPass.setMinimum(4);
+        jSliderLongitudPass.setMinorTickSpacing(1);
+        jSliderLongitudPass.setValue(8);
+        jSliderLongitudPass.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderLongitudPassStateChanged(evt);
+            }
+        });
+
+        jLabelLongitudPass.setText("Password length: ");
+
+        jButtonCrearPass.setText("Generate password");
+        jButtonCrearPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearPassActionPerformed(evt);
+            }
+        });
+
+        jLabelPassword.setText("Password");
+        jLabelPassword.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jButtonCrearPass))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBoxSimbolos)
+                                    .addComponent(jCheckBoxNumeros))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBoxMinusculas)
+                                    .addComponent(jCheckBoxMayusculas))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBoxCaracterEspecialMinusculas)
+                                    .addComponent(jCheckBoxCaracterEspecialMayusculas)))
+                            .addComponent(jLabelLongitudPass, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jSliderLongitudPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxMinusculas)
+                    .addComponent(jCheckBoxNumeros)
+                    .addComponent(jCheckBoxCaracterEspecialMinusculas))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxMayusculas)
+                    .addComponent(jCheckBoxSimbolos)
+                    .addComponent(jCheckBoxCaracterEspecialMayusculas))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelLongitudPass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSliderLongitudPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jButtonCrearPass)
+                .addGap(38, 38, 38)
+                .addComponent(jLabelPassword)
+                .addContainerGap(169, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jSliderLongitudPassStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderLongitudPassStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSliderLongitudPassStateChanged
+
+    private void jCheckBoxMinusculasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMinusculasStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMinusculasStateChanged
+
+    private void jCheckBoxNumerosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxNumerosStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxNumerosStateChanged
+
+    private void jCheckBoxCaracterEspecialMinusculasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxCaracterEspecialMinusculasStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxCaracterEspecialMinusculasStateChanged
+
+    private void jCheckBoxCaracterEspecialMayusculasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxCaracterEspecialMayusculasStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxCaracterEspecialMayusculasStateChanged
+
+    private void jCheckBoxSimbolosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxSimbolosStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxSimbolosStateChanged
+
+    private void jCheckBoxMayusculasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMayusculasStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMayusculasStateChanged
+
+    private void jButtonCrearPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCrearPassActionPerformed
+
+    private void jCheckBoxCaracterEspecialMinusculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCaracterEspecialMinusculasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxCaracterEspecialMinusculasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jButtonCrearPass;
+    public javax.swing.JCheckBox jCheckBoxCaracterEspecialMayusculas;
+    public javax.swing.JCheckBox jCheckBoxCaracterEspecialMinusculas;
+    public javax.swing.JCheckBox jCheckBoxMayusculas;
+    public javax.swing.JCheckBox jCheckBoxMinusculas;
+    public javax.swing.JCheckBox jCheckBoxNumeros;
+    public javax.swing.JCheckBox jCheckBoxSimbolos;
+    public javax.swing.JLabel jLabelLongitudPass;
+    public javax.swing.JLabel jLabelPassword;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -101,5 +274,6 @@ public class VPanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JMenuBar jMenuBar4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    public javax.swing.JSlider jSliderLongitudPass;
     // End of variables declaration//GEN-END:variables
 }

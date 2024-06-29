@@ -3,9 +3,13 @@ package Aplicacion;
 import Controlador.ControladorPrincipal;
 import Vista.VistaMensaje;
 import java.util.Calendar;
+import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.swing.plaf.multi.MultiLookAndFeel;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 /**
  *
@@ -15,6 +19,7 @@ public class Aplicacion {
     public static void main(String[] args) {
         LightMode();
         init();
+        
     }
     
     /** Inicia la aplicacion al acceso de inicio de usuario.
@@ -40,7 +45,7 @@ public class Aplicacion {
             if(hora>8 || hora<20)
                 UIManager.setLookAndFeel( new NimbusLookAndFeel());
             if(hora<8 || hora>20)
-                UIManager.setLookAndFeel( new NimbusLookAndFeel());
+                UIManager.setLookAndFeel( new MetalLookAndFeel());
         } catch(UnsupportedLookAndFeelException ex) {
             //System.err.println( "Mensaje de error main UIMAnager:\n" + ex.getMessage());
             vmensaje.Mensaje("error", "Se ha producido un error con UIManager.setLookAndFell:\n"
