@@ -27,7 +27,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuFileExit = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
@@ -49,9 +48,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuFileExit);
 
         jMenuBar1.add(jMenu3);
-
-        jMenu5.setText("About");
-        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -80,7 +76,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem jMenuFileExit;
     // End of variables declaration//GEN-END:variables

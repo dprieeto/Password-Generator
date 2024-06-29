@@ -4,11 +4,23 @@ import Modelo.Constantes;
 import Modelo.Password;
 import Vista.*;
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,11 +31,9 @@ import javax.swing.event.ChangeListener;
  */
 public class ControladorPrincipal implements ActionListener, ChangeListener {
 
-    private VistaPrincipal vPrincipal;
+    private final VistaPrincipal vPrincipal;
 
-    private VPanelPrincipal vpPrincipal;
-
-    private List<JCheckBox> checkboxes; // necesario?? crro q no
+    private final VPanelPrincipal vpPrincipal;
 
     private List<String> caracteres;
 
@@ -35,9 +45,14 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
 
         caracteres = new ArrayList<>();
 
+        addCopyToClipboardSettings();
+        vpPrincipal.jLabelPasswordCopied.setVisible(false);
         addActionListeners();
         addChangeListeners();
 
+        setComponentsVisibility(false);
+
+        // ajustes del jframe:
         vPrincipal.setLocationRelativeTo(null);//situa la ventana en el centro de la pantalla
         vPrincipal.setVisible(true);//muestra la ventana
         //vprincipal.setPreferredSize(new Dimension(970,400));
@@ -55,6 +70,7 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
         vPrincipal.jMenuFileExit.addActionListener(this);
 
         vpPrincipal.jButtonCrearPass.addActionListener(this);
+        vpPrincipal.jButtonCopy.addActionListener(this);
     }
 
     /**
@@ -71,23 +87,49 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
         vpPrincipal.jSliderLongitudPass.addChangeListener(this);
         longitud = vpPrincipal.jSliderLongitudPass.getValue();
         vpPrincipal.jLabelLongitudPass.setText("Password lenght: " + longitud);
-        vpPrincipal.jLabelPassword.setText("");
+
+    }
+
+    /**
+     *
+     * @param aFlag true = muestra la contraseña generada, false en caso
+     * contrario
+     */
+    private void setComponentsVisibility(boolean aFlag) {
+        vpPrincipal.jLabelNoPass.setVisible(aFlag);
+        vpPrincipal.jTextFieldPassword.setVisible(aFlag);
+        vpPrincipal.jButtonCopy.setVisible(aFlag);
+        vpPrincipal.revalidate();
+    }
+
+    private void addCopyToClipboardSettings() {
+        try {
+            vpPrincipal.jButtonCopy.setText("C");
+            vpPrincipal.jButtonCopy.setMinimumSize(new Dimension(30, 30));
+            BufferedImage imagen = ImageIO.read(new File("src/Vista/Imagenes/copy_icon.jpg"));
+            ImageIcon icon = new ImageIcon(imagen.getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+            vpPrincipal.jButtonCopy.setIcon(icon);
+
+        } catch (IOException ex) {
+            VistaMensaje.StaticMensaje(vPrincipal, "error", "Internal error", ex.getMessage());
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Exit" -> {
-
-                // mensaje de salir sin guardar
                 vPrincipal.dispose();
                 System.exit(0);
             }
             case "Generate password" -> {
+                vpPrincipal.jLabelPasswordCopied.setVisible(false);
                 try {
                     if (!caracteres.isEmpty()) {
                         String pass = Password.generatePassword(caracteres, longitud);
-                        vpPrincipal.jLabelPassword.setText(pass);
+                        setComponentsVisibility(true);
+                        vpPrincipal.jTextFieldPassword.setText(pass);
+
                     } else {
                         VistaMensaje.StaticMensaje(vPrincipal, "error", "Error", "None checkboxes were selected.");
                     }
@@ -97,6 +139,20 @@ public class ControladorPrincipal implements ActionListener, ChangeListener {
                             + ex.getMessage());
                 }
 
+            }
+            case "C" -> {
+                String pass = vpPrincipal.jTextFieldPassword.getText();
+                if (!pass.isBlank()) {
+                    StringSelection selection = new StringSelection(pass);
+                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                    clipboard.setContents(selection, selection);
+                    vpPrincipal.jLabelPasswordCopied.setText("The generated password has been cut to the clipboard.");
+                    vpPrincipal.jLabelPasswordCopied.setVisible(true);
+                    vpPrincipal.repaint();
+
+                } else {
+                    VistaMensaje.StaticMensaje(vPrincipal, "error", "Error", "No password is generated.");
+                }
             }
 
         }

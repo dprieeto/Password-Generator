@@ -50,7 +50,10 @@ public class VPanelPrincipal extends javax.swing.JPanel {
         jSliderLongitudPass = new javax.swing.JSlider();
         jLabelLongitudPass = new javax.swing.JLabel();
         jButtonCrearPass = new javax.swing.JButton();
-        jLabelPassword = new javax.swing.JLabel();
+        jLabelNoPass = new javax.swing.JLabel();
+        jTextFieldPassword = new javax.swing.JTextField();
+        jButtonCopy = new javax.swing.JButton();
+        jLabelPasswordCopied = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -153,8 +156,21 @@ public class VPanelPrincipal extends javax.swing.JPanel {
             }
         });
 
-        jLabelPassword.setText("Password");
-        jLabelPassword.setToolTipText("");
+        jLabelNoPass.setText("Password:");
+
+        jTextFieldPassword.setEditable(false);
+        jTextFieldPassword.setForeground(new java.awt.Color(0, 0, 204));
+        jTextFieldPassword.setText("Password");
+
+        jButtonCopy.setText("Copy");
+        jButtonCopy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCopyActionPerformed(evt);
+            }
+        });
+
+        jLabelPasswordCopied.setForeground(new java.awt.Color(204, 0, 0));
+        jLabelPasswordCopied.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -163,8 +179,11 @@ public class VPanelPrincipal extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(166, 166, 166)
                         .addComponent(jButtonCrearPass))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jSliderLongitudPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +200,16 @@ public class VPanelPrincipal extends javax.swing.JPanel {
                                     .addComponent(jCheckBoxCaracterEspecialMinusculas)
                                     .addComponent(jCheckBoxCaracterEspecialMayusculas)))
                             .addComponent(jLabelLongitudPass, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jSliderLongitudPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelNoPass, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelPasswordCopied)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,9 +230,14 @@ public class VPanelPrincipal extends javax.swing.JPanel {
                 .addComponent(jSliderLongitudPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonCrearPass)
-                .addGap(38, 38, 38)
-                .addComponent(jLabelPassword)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNoPass)
+                    .addComponent(jTextFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCopy, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabelPasswordCopied)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -248,8 +277,13 @@ public class VPanelPrincipal extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxCaracterEspecialMinusculasActionPerformed
 
+    private void jButtonCopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCopyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCopyActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jButtonCopy;
     public javax.swing.JButton jButtonCrearPass;
     public javax.swing.JCheckBox jCheckBoxCaracterEspecialMayusculas;
     public javax.swing.JCheckBox jCheckBoxCaracterEspecialMinusculas;
@@ -258,7 +292,8 @@ public class VPanelPrincipal extends javax.swing.JPanel {
     public javax.swing.JCheckBox jCheckBoxNumeros;
     public javax.swing.JCheckBox jCheckBoxSimbolos;
     public javax.swing.JLabel jLabelLongitudPass;
-    public javax.swing.JLabel jLabelPassword;
+    public javax.swing.JLabel jLabelNoPass;
+    public javax.swing.JLabel jLabelPasswordCopied;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -275,5 +310,6 @@ public class VPanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JSlider jSliderLongitudPass;
+    public javax.swing.JTextField jTextFieldPassword;
     // End of variables declaration//GEN-END:variables
 }
